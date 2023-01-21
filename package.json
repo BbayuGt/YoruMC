@@ -1,0 +1,31 @@
+{
+  "name": "yorumc",
+  "version": "1.0.0",
+  "description": "Bot untuk kontrol server Minecraft Yoru",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updatecmd": "node ./dist/deploy-commands.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BbayuGt/YoruMC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BbayuGt/YoruMC/issues"
+  },
+  "homepage": "https://github.com/BbayuGt/YoruMC#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "moment": "^2.29.4",
+    "ptero-client": "^1.0.14",
+    "pteroly": "^1.9.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "dotenv": "^16.0.3"
+  }
+}
