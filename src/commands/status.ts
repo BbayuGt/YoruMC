@@ -12,7 +12,6 @@ module.exports = {
         .setDescription("Cek Status Server"),
     async execute(interaction:CommandInteraction) {
         const status = await getServerInfo()
-        console.log(status)
         const embed = new EmbedBuilder()
         embed.setColor(function () {
             switch (status.usage.current_state) {

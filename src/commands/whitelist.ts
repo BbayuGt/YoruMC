@@ -18,6 +18,7 @@ module.exports = {
             await interaction.reply(`${!!tambah? "Menambah" : "Menghapus"} **${nama}** Kedalam whitelist...`)
             if (typeof nama !== "string") return await interaction.reply("Nama tidak boleh kosong!")
             await whitelist(!!tambah, nama)
+            await interaction.client.channels.fetch()
             await interaction.followUp(`Berhasil ${(!!tambah) ? "Menambah" : "Menghapus"} **${nama}** dari whitelist!`)
         }
         else {
