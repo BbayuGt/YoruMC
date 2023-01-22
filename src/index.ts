@@ -32,7 +32,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-const commandsPath = path.join(__dirname, 'commands');
+const commandsPath = path.join(__dirname, "..", "dist", 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 (client as any).commands = new Collection();
 for (const file of commandFiles) {

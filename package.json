@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/BbayuGt/YoruMC#readme",
   "dependencies": {
+    "bedrock-protocol": "^3.22.0",
     "discord.js": "^14.7.1",
     "moment": "^2.29.4",
     "ptero-client": "^1.0.14",

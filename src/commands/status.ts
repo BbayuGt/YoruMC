@@ -15,7 +15,7 @@ module.exports = {
         console.log(status)
         const embed = new EmbedBuilder()
         embed.setColor(function () {
-            switch (status.current_state) {
+            switch (status.usage.current_state) {
                 case "starting":
                 case "running":
                     return COLORS.RUNNING
@@ -27,7 +27,7 @@ module.exports = {
         }())
         .setTitle("Status Server Minecraft Yoru")
         .setDescription(function () {
-            switch (status.current_state) {
+            switch (status.usage.current_state) {
                 case "offline":
                     return ":red_circle: Server sekarang offline :/"
                 case "running":
@@ -37,17 +37,26 @@ module.exports = {
                     return ":yellow_circle: Server Sedang Restart! :)"
             }
         }())
-        .addFields({
+        .addFields(
+        {
+            name:"Jumlah pemain",
+            value:`${status.information.playersOnline}/${status.information.playersMax}`
+        },
+        {
+            name:"Versi server",
+            value:`${status.information.version}`
+        },
+        {
             name:"Penggunaan RAM",
-            value:(Math.floor(status.resources.memory_bytes/1024/1024)).toString() + ` MB / ${1024 * 3} MB`
+            value:(Math.floor(status.usage.resources.memory_bytes/1024/1024)).toString() + ` MB / ${1024 * 3} MB`
         },
         {
             name:"Penggunaan CPU",
-            value:`${Math.floor(status.resources.cpu_absolute).toString()}%/100%`
+            value:`${Math.floor(status.usage.resources.cpu_absolute).toString()}%/100%`
         },
         {
             name:"Penggunaan Disk",
-            value:`${Math.floor(status.resources.disk_bytes/1024/1024).toString()} MB`
+            value:`${Math.floor(status.usage.resources.disk_bytes/1024/1024).toString()} MB`
         })
         await interaction.reply({
             embeds:[embed]
