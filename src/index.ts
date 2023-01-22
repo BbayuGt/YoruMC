@@ -2,6 +2,7 @@ import { Client, Collection, Events, GatewayIntentBits } from "discord.js"
 import dotenv from "dotenv"
 import path from "path";
 import fs from "fs"
+import { setClient } from "./lib/client";
 dotenv.config()
 
 const client = new Client(
@@ -13,6 +14,8 @@ const client = new Client(
         ],
     }
 )
+
+
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
@@ -43,11 +46,13 @@ for (const file of commandFiles) {
 		(client as any).commands.set(command.data.name, command);
 	} else {
 		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+		console.log(typeof command.data, typeof command.execute)
 	}
 }
 
-client.once("ready", () => {
+client.once("ready", (client) => {
     console.log("Ready")
+	setClient(client)
 })
 
 
